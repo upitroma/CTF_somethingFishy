@@ -1,9 +1,9 @@
 from stockfish import Stockfish
 import requests
 
-stockfish = Stockfish(parameters={"Threads": 2})
+stockfish = Stockfish(parameters={"Threads": 8})
 
-stockfish.set_elo_rating(2600)
+stockfish.set_skill_level(20)
 
 game=[]
 
@@ -21,7 +21,7 @@ def sendWebRequest(move):
 
 
 while True:
-    AIMove=stockfish.get_best_move_time(2000)
+    AIMove=stockfish.get_best_move()
     print("My move: "+AIMove)
     game.append(AIMove)
 
