@@ -77,21 +77,21 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     if(request.method != 'GET'):
-        return jsonify({'data': "Invalid Request. Must be GET."}), 400
+        return jsonify({'opponentMove': "Invalid Request. Must be GET."}), 400
 
     args = request.args
     if not args.get("userId"):
-        return jsonify({'data': "Invalid Request. Must provide a unique userId and valid move. Example of valid first move: /?userId=upitroma&move=e2e3"}), 400
+        return jsonify({'opponentMove': "Invalid Request. Must provide a unique userId and valid move. Example of valid first move: /?userId=upitroma&move=e2e3"}), 400
     gameId = args.get("userId")
     
     if not args.get("move"):
-        return jsonify({'data': "Invalid Request. Must provide a unique userId and valid move. Example of valid first move: /?userId=upitroma&move=e2e3"}), 400
+        return jsonify({'opponentMove': "Invalid Request. Must provide a unique userId and valid move. Example of valid first move: /?userId=upitroma&move=e2e3"}), 400
     playerMove = args.get("move")
 
     move = getMove(gameId,playerMove)
     
 
-    return jsonify({'data': move}), 200
+    return jsonify({'opponentMove': move}), 200
 
 
 if __name__ == '__main__':
